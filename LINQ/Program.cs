@@ -173,16 +173,31 @@ namespace LINQ
 			#endregion
 
 			#region Q12
-			
 
-			var distinctCategories = productList
-				.Select(p => p.Category)
-				.Distinct();
 
-			foreach (var category in distinctCategories)
+			//var distinctCategories = productList
+			//	.Select(p => p.Category)
+			//	.Distinct();
+
+			//foreach (var category in distinctCategories)
+			//{
+			//	Console.WriteLine(category);
+			//}
+
+			#endregion
+
+			#region Q13
+			//find product IDs that are in setA but NOT in setB
+			int[] setA = { 1, 3, 5, 7, 9, 11, 13 };
+			int[] setB = { 3, 6, 9, 12, 15, 13 };
+
+			var difference = setA.Except(setB);
+			foreach (var id in difference)
 			{
-				Console.WriteLine(category);
+				Console.WriteLine($"Product IDs in setA but not in setB: {id}   ");
+
 			}
+
 
 			#endregion
 
