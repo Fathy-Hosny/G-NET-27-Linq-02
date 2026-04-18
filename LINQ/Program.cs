@@ -61,11 +61,24 @@ namespace LINQ
 			#endregion
 
 			#region Q5
-			
-			int[] ids = { 3, 9, 13, 18 };
 
-			var contain = ids.Contains(9);
-			Console.WriteLine($"ID list contains 9: {contain}");
+			//int[] ids = { 3, 9, 13, 18 };
+
+			//var contain = ids.Contains(9);
+			//Console.WriteLine($"ID list contains 9: {contain}");
+
+			#endregion
+
+			#region Q6
+			
+			var productsByCategory = productList
+				.GroupBy(p => p.Category)
+				.Select(g => new { Category = g.Key, Count = g.Count() });
+
+			foreach (var group in productsByCategory)
+			{
+				Console.WriteLine($"Category: {group.Category}, Count: {group.Count}");
+			}
 
 			#endregion
 
