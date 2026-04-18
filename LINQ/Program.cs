@@ -217,16 +217,28 @@ namespace LINQ
 
 			#region Q15
 
-			var productDictionary = productList.ToDictionary(p => p.ProductID);
+			//var productDictionary = productList.ToDictionary(p => p.ProductID);
 
-			if (productDictionary.TryGetValue(18, out var product))
-			{
-				Console.WriteLine($"Product ID: {product.ProductID}, Name: {product.ProductName}, Price: {product.UnitPrice:C}");
-			}
-			else
-			{
-				Console.WriteLine("Product with ID 18 not found.");
-			}
+			//if (productDictionary.TryGetValue(18, out var product))
+			//{
+			//	Console.WriteLine($"Product ID: {product.ProductID}, Name: {product.ProductName}, Price: {product.UnitPrice:C}");
+			//}
+			//else
+			//{
+			//	Console.WriteLine("Product with ID 18 not found.");
+			//}
+
+			#endregion
+
+			#region Q16
+			
+
+			var expensiveProduct = productList
+				.Select(p => new { p.ProductName, p.UnitPrice })
+				.FirstOrDefault(p => p.UnitPrice > 50);
+
+				Console.WriteLine($"First product with price > $50: {expensiveProduct.ProductName} - Price: {expensiveProduct.UnitPrice:C}");
+		
 
 			#endregion
 
