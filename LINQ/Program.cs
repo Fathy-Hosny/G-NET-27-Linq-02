@@ -147,9 +147,28 @@ namespace LINQ
 
 			#region Q10
 
-			var totalUnitsInStock = productList.Sum(p => p.UnitsInStock);
+			//var totalUnitsInStock = productList.Sum(p => p.UnitsInStock);
 
-			Console.WriteLine(  $"total number in stock: {totalUnitsInStock:F2}" );
+			//Console.WriteLine(  $"total number in stock: {totalUnitsInStock:F2}" );
+
+			#endregion
+
+			#region Q11
+
+			var mostExpensiveProduct = productList
+				.OrderByDescending(p => p.UnitPrice)
+				.Select(p => new { p.ProductName, p.UnitPrice })
+				.FirstOrDefault();
+
+			var cheapestProduct = productList
+				.OrderBy(p => p.UnitPrice)
+				.Select(p => new { p.ProductName, p.UnitPrice })
+				.FirstOrDefault();
+
+			Console.WriteLine($"Most expensive product: {mostExpensiveProduct.ProductName} - Price: {mostExpensiveProduct.UnitPrice:C}");
+			Console.WriteLine("\n=================================================");
+
+			Console.WriteLine($"Cheapest product: {cheapestProduct.ProductName} - Price: {cheapestProduct.UnitPrice:C}");
 
 			#endregion
 
