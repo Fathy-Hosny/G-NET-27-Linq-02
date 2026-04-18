@@ -70,15 +70,40 @@ namespace LINQ
 			#endregion
 
 			#region Q6
-			
+
+			//var productsByCategory = productList
+			//	.GroupBy(p => p.Category)
+			//	.Select(g => new { Category = g.Key, Count = g.Count() });
+
+			//foreach (var group in productsByCategory)
+			//{
+			//	Console.WriteLine($"Category: {group.Category}, Count: {group.Count}");
+			//}
+
+			#endregion
+
+			#region Q7
+
+
 			var productsByCategory = productList
-				.GroupBy(p => p.Category)
-				.Select(g => new { Category = g.Key, Count = g.Count() });
+				.ToLookup(p => p.Category, p => p.ProductName);
 
 			foreach (var group in productsByCategory)
 			{
-				Console.WriteLine($"Category: {group.Category}, Count: {group.Count}");
+				int c = 0;
+				Console.WriteLine("\n=============================");
+
+				Console.WriteLine($"Category: {group.Key}");
+				Console.WriteLine("\n");
+
+				foreach (var name in group)
+				{
+					c++;
+
+					Console.WriteLine($"{c}-{name}");
+				}
 			}
+
 
 			#endregion
 
