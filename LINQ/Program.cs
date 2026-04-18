@@ -38,17 +38,25 @@ namespace LINQ
 			#endregion
 
 			#region Q3
+
+			//var productsLessThan25 = productList
+			//	.OrderBy(p => p.UnitPrice)
+			//	.TakeWhile(p => p.UnitPrice < 25);
+
+			//foreach (var item in productsLessThan25)
+			//{
+			//	Console.WriteLine(item);
+			//}
+
+			#endregion
+
+			#region Q4
 	
+			var allSeafoodInStock = productList
+				.Where(p => p.Category == "Seafood")
+				.All(p => p.UnitsInStock > 0);
 
-			var productsLessThan25 = productList
-				.OrderBy(p => p.UnitPrice)
-				.TakeWhile(p => p.UnitPrice < 25);
-
-			foreach (var item in productsLessThan25)
-			{
-				Console.WriteLine(item);
-			}
-
+			Console.WriteLine($"All seafood products in stock: {allSeafoodInStock}");
 
 			#endregion
 
