@@ -1,4 +1,5 @@
 ﻿using LINQ.DataSources;
+using LINQ.Models;
 
 namespace LINQ
 {
@@ -21,19 +22,38 @@ namespace LINQ
 			#endregion
 
 			#region Q2
-			int pageSize = 5;
-			int pageNumber = 2;
-			var pagination = productList
-				.OrderBy(p => p.ProductID)
-				.Skip((pageNumber - 1) * pageSize)
-				.Take(pageSize)
-				.ToList();	
-			foreach (var item in pagination)
+
+			//int pageSize = 5;
+			//int pageNumber = 2;
+			//var pagination = productList
+			//	.OrderBy(p => p.ProductID)
+			//	.Skip((pageNumber - 1) * pageSize)
+			//	.Take(pageSize)
+			//	.ToList();	
+			//foreach (var item in pagination)
+			//{
+			//	Console.WriteLine(item);
+			//}
+
+			#endregion
+
+			#region Q3
+	
+
+			var productsLessThan25 = productList
+				.OrderBy(p => p.UnitPrice)
+				.TakeWhile(p => p.UnitPrice < 25);
+
+			foreach (var item in productsLessThan25)
 			{
 				Console.WriteLine(item);
 			}
 
+
 			#endregion
+
+
+
 		}
 	}
 }
