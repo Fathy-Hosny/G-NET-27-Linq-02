@@ -203,18 +203,32 @@ namespace LINQ
 
 			#region Q14
 
-				string[] list1 = { "Germany", "France", "UK", "Spain" };
-				string[] list2 = { "france", "SPAIN", "Italy" };
+			//	string[] list1 = { "Germany", "France", "UK", "Spain" };
+			//	string[] list2 = { "france", "SPAIN", "Italy" };
 
-			var difference = list1.Except(list2, StringComparer.OrdinalIgnoreCase);
+			//var difference = list1.Except(list2, StringComparer.OrdinalIgnoreCase);
 
-			foreach (var country in difference)
-			{
-				Console.WriteLine($"Countries in list1 but not in list2: {country}");
-			}
+			//foreach (var country in difference)
+			//{
+			//	Console.WriteLine($"Countries in list1 but not in list2: {country}");
+			//}
 
 			#endregion
 
+			#region Q15
+
+			var productDictionary = productList.ToDictionary(p => p.ProductID);
+
+			if (productDictionary.TryGetValue(18, out var product))
+			{
+				Console.WriteLine($"Product ID: {product.ProductID}, Name: {product.ProductName}, Price: {product.UnitPrice:C}");
+			}
+			else
+			{
+				Console.WriteLine("Product with ID 18 not found.");
+			}
+
+			#endregion
 
 
 		}
