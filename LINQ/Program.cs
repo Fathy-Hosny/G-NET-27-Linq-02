@@ -231,14 +231,22 @@ namespace LINQ
 			#endregion
 
 			#region Q16
-			
+
+
+			//var expensiveProduct = productList
+			//	.Select(p => new { p.ProductName, p.UnitPrice })
+			//	.FirstOrDefault(p => p.UnitPrice > 50);
+
+			//	Console.WriteLine($"First product with price > $50: {expensiveProduct.ProductName} - Price: {expensiveProduct.UnitPrice:C}");
+
+
+			#endregion
+
+			#region Q17
 
 			var expensiveProduct = productList
-				.Select(p => new { p.ProductName, p.UnitPrice })
-				.FirstOrDefault(p => p.UnitPrice > 50);
-
-				Console.WriteLine($"First product with price > $50: {expensiveProduct.ProductName} - Price: {expensiveProduct.UnitPrice:C}");
-		
+				.FirstOrDefault(p => p.UnitPrice > 500);
+			Console.WriteLine(expensiveProduct);
 
 			#endregion
 
