@@ -1,5 +1,6 @@
 ﻿using LINQ.DataSources;
 using LINQ.Models;
+using System.Diagnostics.Metrics;
 
 namespace LINQ
 {
@@ -108,17 +109,38 @@ namespace LINQ
 			#endregion
 
 			#region Q8
-		
-			var categoriesMoreThan3Products = productList
-				.GroupBy(p => p.Category)
-				.Where(g => g.Count() > 3)
-				.Select(g => g.Key);
 
-			foreach (var category in categoriesMoreThan3Products)
-			{
-				Console.WriteLine(category);
-			}
+			//var categoriesMoreThan3Products = productList
+			//	.GroupBy(p => p.Category)
+			//	.Where(g => g.Count() > 3)
+			//	.Select(g => g.Key);
 
+			//foreach (var category in categoriesMoreThan3Products)
+			//{
+			//	Console.WriteLine(category);
+			//}
+
+
+			#endregion
+
+			#region Q9
+
+			var customerList = Source.CustomerList;
+
+			var groupcustomers = from c in customerList
+									group c by c.Country into g
+									select new
+									{
+										Country = g.Key,
+										Count = g.Count(),
+										TotalOrderValue = g.Sum(c => c.Orders.Sum(o => o.Total))
+									};
+
+				foreach (var g in groupcustomers)
+				{
+					Console.WriteLine($"Country: {g.Country,-15} | Customers: {g.Count,-5} | Total Revenue: {g.TotalOrderValue:C}");
+				}
+			
 
 			#endregion
 
