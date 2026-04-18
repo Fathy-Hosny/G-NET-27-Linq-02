@@ -51,12 +51,21 @@ namespace LINQ
 			#endregion
 
 			#region Q4
-	
-			var allSeafoodInStock = productList
-				.Where(p => p.Category == "Seafood")
-				.All(p => p.UnitsInStock > 0);
 
-			Console.WriteLine($"All seafood products in stock: {allSeafoodInStock}");
+			//var allSeafoodInStock = productList
+			//	.Where(p => p.Category == "Seafood")
+			//	.All(p => p.UnitsInStock > 0);
+
+			//Console.WriteLine($"All seafood products in stock: {allSeafoodInStock}");
+
+			#endregion
+
+			#region Q5
+			
+			int[] ids = { 3, 9, 13, 18 };
+
+			var contain = ids.Contains(9);
+			Console.WriteLine($"ID list contains 9: {contain}");
 
 			#endregion
 
