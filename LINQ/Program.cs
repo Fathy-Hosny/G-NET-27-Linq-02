@@ -85,23 +85,38 @@ namespace LINQ
 			#region Q7
 
 
-			var productsByCategory = productList
-				.ToLookup(p => p.Category, p => p.ProductName);
+			//var productsByCategory = productList
+			//	.ToLookup(p => p.Category, p => p.ProductName);
 
-			foreach (var group in productsByCategory)
+			//foreach (var group in productsByCategory)
+			//{
+			//	int c = 0;
+			//	Console.WriteLine("\n=============================");
+
+			//	Console.WriteLine($"Category: {group.Key}");
+			//	Console.WriteLine("\n");
+
+			//	foreach (var name in group)
+			//	{
+			//		c++;
+
+			//		Console.WriteLine($"{c}-{name}");
+			//	}
+			//}
+
+
+			#endregion
+
+			#region Q8
+		
+			var categoriesMoreThan3Products = productList
+				.GroupBy(p => p.Category)
+				.Where(g => g.Count() > 3)
+				.Select(g => g.Key);
+
+			foreach (var category in categoriesMoreThan3Products)
 			{
-				int c = 0;
-				Console.WriteLine("\n=============================");
-
-				Console.WriteLine($"Category: {group.Key}");
-				Console.WriteLine("\n");
-
-				foreach (var name in group)
-				{
-					c++;
-
-					Console.WriteLine($"{c}-{name}");
-				}
+				Console.WriteLine(category);
 			}
 
 
