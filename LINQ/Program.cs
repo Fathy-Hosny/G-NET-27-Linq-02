@@ -187,17 +187,31 @@ namespace LINQ
 			#endregion
 
 			#region Q13
-			//find product IDs that are in setA but NOT in setB
-			int[] setA = { 1, 3, 5, 7, 9, 11, 13 };
-			int[] setB = { 3, 6, 9, 12, 15, 13 };
 
-			var difference = setA.Except(setB);
-			foreach (var id in difference)
+			//int[] setA = { 1, 3, 5, 7, 9, 11, 13 };
+			//int[] setB = { 3, 6, 9, 12, 15, 13 };
+
+			//var difference = setA.Except(setB);
+			//foreach (var id in difference)
+			//{
+			//	Console.WriteLine($"Product IDs in setA but not in setB: {id}   ");
+
+			//}
+
+
+			#endregion
+
+			#region Q14
+
+				string[] list1 = { "Germany", "France", "UK", "Spain" };
+				string[] list2 = { "france", "SPAIN", "Italy" };
+
+			var difference = list1.Except(list2, StringComparer.OrdinalIgnoreCase);
+
+			foreach (var country in difference)
 			{
-				Console.WriteLine($"Product IDs in setA but not in setB: {id}   ");
-
+				Console.WriteLine($"Countries in list1 but not in list2: {country}");
 			}
-
 
 			#endregion
 
