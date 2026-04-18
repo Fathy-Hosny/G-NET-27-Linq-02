@@ -1,5 +1,6 @@
 ﻿using LINQ.DataSources;
 using LINQ.Models;
+using System.Collections;
 using System.Diagnostics.Metrics;
 
 namespace LINQ
@@ -125,22 +126,30 @@ namespace LINQ
 
 			#region Q9
 
-			var customerList = Source.CustomerList;
+			//var customerList = Source.CustomerList;
 
-			var groupcustomers = from c in customerList
-									group c by c.Country into g
-									select new
-									{
-										Country = g.Key,
-										Count = g.Count(),
-										TotalOrderValue = g.Sum(c => c.Orders.Sum(o => o.Total))
-									};
+			//var groupcustomers = from c in customerList
+			//						group c by c.Country into g
+			//						select new
+			//						{
+			//							Country = g.Key,
+			//							Count = g.Count(),
+			//							TotalOrderValue = g.Sum(c => c.Orders.Sum(o => o.Total))
+			//						};
 
-				foreach (var g in groupcustomers)
-				{
-					Console.WriteLine($"Country: {g.Country,-15} | Customers: {g.Count,-5} | Total Revenue: {g.TotalOrderValue:C}");
-				}
-			
+			//	foreach (var g in groupcustomers)
+			//	{
+			//		Console.WriteLine($"Country: {g.Country,-15} | Customers: {g.Count,-5} | Total Revenue: {g.TotalOrderValue:C}");
+			//	}
+
+
+			#endregion
+
+			#region Q10
+
+			var totalUnitsInStock = productList.Sum(p => p.UnitsInStock);
+
+			Console.WriteLine(  $"total number in stock: {totalUnitsInStock:F2}" );
 
 			#endregion
 
