@@ -155,20 +155,34 @@ namespace LINQ
 
 			#region Q11
 
-			var mostExpensiveProduct = productList
-				.OrderByDescending(p => p.UnitPrice)
-				.Select(p => new { p.ProductName, p.UnitPrice })
-				.FirstOrDefault();
+			//var mostExpensiveProduct = productList
+			//	.OrderByDescending(p => p.UnitPrice)
+			//	.Select(p => new { p.ProductName, p.UnitPrice })
+			//	.FirstOrDefault();
 
-			var cheapestProduct = productList
-				.OrderBy(p => p.UnitPrice)
-				.Select(p => new { p.ProductName, p.UnitPrice })
-				.FirstOrDefault();
+			//var cheapestProduct = productList
+			//	.OrderBy(p => p.UnitPrice)
+			//	.Select(p => new { p.ProductName, p.UnitPrice })
+			//	.FirstOrDefault();
 
-			Console.WriteLine($"Most expensive product: {mostExpensiveProduct.ProductName} - Price: {mostExpensiveProduct.UnitPrice:C}");
-			Console.WriteLine("\n=================================================");
+			//Console.WriteLine($"Most expensive product: {mostExpensiveProduct.ProductName} - Price: {mostExpensiveProduct.UnitPrice:C}");
+			//Console.WriteLine("\n=================================================");
 
-			Console.WriteLine($"Cheapest product: {cheapestProduct.ProductName} - Price: {cheapestProduct.UnitPrice:C}");
+			//Console.WriteLine($"Cheapest product: {cheapestProduct.ProductName} - Price: {cheapestProduct.UnitPrice:C}");
+
+			#endregion
+
+			#region Q12
+			
+
+			var distinctCategories = productList
+				.Select(p => p.Category)
+				.Distinct();
+
+			foreach (var category in distinctCategories)
+			{
+				Console.WriteLine(category);
+			}
 
 			#endregion
 
